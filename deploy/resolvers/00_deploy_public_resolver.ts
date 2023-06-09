@@ -31,11 +31,11 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   )
   await tx.wait()
 
-  if ((await registry.owner(ethers.utils.namehash('resolver.eth'))) === owner) {
+  if ((await registry.owner(ethers.utils.namehash('resolver.planq'))) === owner) {
     const pr = (await ethers.getContract('PublicResolver')).connect(
       await ethers.getSigner(owner),
     )
-    const resolverHash = ethers.utils.namehash('resolver.eth')
+    const resolverHash = ethers.utils.namehash('resolver.planq')
     const tx2 = await registry.setResolver(resolverHash, pr.address)
     console.log(
       `Setting resolver for resolver.eth to PublicResolver (tx: ${tx2.hash})...`,

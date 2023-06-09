@@ -92,11 +92,11 @@ describe('TestUnwrap', () => {
   })
 
   describe('wrapFromUpgrade()', () => {
-    describe('.eth', () => {
-      const encodedName = encodeName('wrapped.eth')
+    describe('.planq', () => {
+      const encodedName = encodeName('wrapped.planq')
       const label = 'wrapped'
       const labelHash = labelhash(label)
-      const nameHash = namehash(label + '.eth')
+      const nameHash = namehash(label + '.planq')
 
       it('allows unwrapping from an approved NameWrapper', async () => {
         await BaseRegistrar.register(labelHash, account, 1 * DAY)
@@ -199,9 +199,9 @@ describe('TestUnwrap', () => {
     describe('other', () => {
       const label = 'to-upgrade'
       const parentLabel = 'wrapped2'
-      const name = label + '.' + parentLabel + '.eth'
+      const name = label + '.' + parentLabel + '.planq'
       const parentLabelHash = labelhash(parentLabel)
-      const parentHash = namehash(parentLabel + '.eth')
+      const parentHash = namehash(parentLabel + '.planq')
       const nameHash = namehash(name)
       const encodedName = encodeName(name)
       it('allows unwrapping from an approved NameWrapper', async () => {

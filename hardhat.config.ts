@@ -77,6 +77,9 @@ const config: HardhatUserConfig = {
       url: 'https://evm-rpc.planq.network:443',
       tags: ['legacy', 'use_root'],
       chainId: 7070,
+      gasPrice: 40000000000,
+      gas: 8000000,
+
       accounts: real_accounts,
     },
   },

@@ -47,8 +47,8 @@ function shouldRespectConstraints(contracts, getSigners) {
 
   let parentLabel = 'test1'
   let parentLabelHash = labelhash(parentLabel)
-  let parentNode = namehash('test1.eth')
-  let childNode = namehash('sub.test1.eth')
+  let parentNode = namehash('test1.planq')
+  let childNode = namehash('sub.test1.planq')
   let childLabel = 'sub'
   let childLabelHash = labelhash(childLabel)
 

@@ -80,7 +80,7 @@ contract NameWrapper is
             MAX_EXPIRY
         );
         names[ROOT_NODE] = "\x00";
-        names[ETH_NODE] = "\x03planq\x00";
+        names[ETH_NODE] = "\x05planq\x00";
     }
 
     function supportsInterface(
@@ -1093,7 +1093,7 @@ contract NameWrapper is
         bytes32 labelhash = keccak256(bytes(label));
         bytes32 node = _makeNode(ETH_NODE, labelhash);
         // hardcode dns-encoded eth string for gas savings
-        bytes memory name = _addLabel(label, "\x03planq\x00");
+        bytes memory name = _addLabel(label, "\x05planq\x00");
         names[node] = name;
 
         _wrap(

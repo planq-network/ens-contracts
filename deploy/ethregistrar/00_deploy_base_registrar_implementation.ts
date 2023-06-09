@@ -12,13 +12,14 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   if (!network.tags.use_root) {
     return true
   }
+  await new Promise(f => setTimeout(f, 5000));
 
   const registry = await ethers.getContract('ENSRegistry')
   const root = await ethers.getContract('Root')
 
   const deployArgs = {
     from: deployer,
-    args: [registry.address, namehash.hash('eth')],
+    args: [registry.address, namehash.hash('planq')],
     log: true,
   }
 
@@ -35,7 +36,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   const tx2 = await root
     .connect(await ethers.getSigner(owner))
-    .setSubnodeOwner('0x' + keccak256('eth'), registrar.address)
+    .setSubnodeOwner('0x' + keccak256('planq'), registrar.address)
   console.log(
     `Setting owner of eth node to registrar on root (tx: ${tx2.hash})...`,
   )

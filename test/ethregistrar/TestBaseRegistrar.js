@@ -41,7 +41,7 @@ contract('BaseRegistrar', function (accounts) {
     )
     var block = await web3.eth.getBlock(tx.receipt.blockHash)
     assert.equal(
-      await ens.owner(namehash.hash('newname.eth')),
+      await ens.owner(namehash.hash('newname.planq')),
       registrantAccount,
     )
     assert.equal(await registrar.ownerOf(sha3('newname')), registrantAccount)
@@ -59,7 +59,7 @@ contract('BaseRegistrar', function (accounts) {
       { from: controllerAccount },
     )
     var block = await web3.eth.getBlock(tx.receipt.blockHash)
-    assert.equal(await ens.owner(namehash.hash('silentname.eth')), ZERO_ADDRESS)
+    assert.equal(await ens.owner(namehash.hash('silentname.planq')), ZERO_ADDRESS)
     assert.equal(await registrar.ownerOf(sha3('silentname')), registrantAccount)
     assert.equal(
       (await registrar.nameExpires(sha3('silentname'))).toNumber(),
@@ -112,13 +112,13 @@ contract('BaseRegistrar', function (accounts) {
       sha3('newname'),
       ZERO_ADDRESS,
     )
-    assert.equal(await ens.owner(namehash.hash('newname.eth')), ZERO_ADDRESS)
+    assert.equal(await ens.owner(namehash.hash('newname.planq')), ZERO_ADDRESS)
     await ens.setSubnodeOwner(ZERO_HASH, sha3('eth'), registrar.address)
     await registrar.reclaim(sha3('newname'), registrantAccount, {
       from: registrantAccount,
     })
     assert.equal(
-      await ens.owner(namehash.hash('newname.eth')),
+      await ens.owner(namehash.hash('newname.planq')),
       registrantAccount,
     )
   })
@@ -141,7 +141,7 @@ contract('BaseRegistrar', function (accounts) {
     assert.equal(await registrar.ownerOf(sha3('newname')), otherAccount)
     // Transfer does not update ENS without a call to reclaim.
     assert.equal(
-      await ens.owner(namehash.hash('newname.eth')),
+      await ens.owner(namehash.hash('newname.planq')),
       registrantAccount,
     )
     await registrar.transferFrom(

@@ -25,11 +25,11 @@ contract('TLDPublicSuffixList', function (accounts) {
       false,
     )
     assert.equal(
-      await suffixList.isPublicSuffix(utils.hexEncodeName('foo.eth')),
+      await suffixList.isPublicSuffix(utils.hexEncodeName('foo.planq')),
       false,
     )
     assert.equal(
-      await suffixList.isPublicSuffix(utils.hexEncodeName('a.b.foo.eth')),
+      await suffixList.isPublicSuffix(utils.hexEncodeName('a.b.foo.planq')),
       false,
     )
   })

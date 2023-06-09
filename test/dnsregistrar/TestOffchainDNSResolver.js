@@ -188,11 +188,11 @@ contract('OffchainDNSResolver', function (accounts) {
       accounts[0],
     )
     await ens.setResolver(
-      namehash.hash('dnsresolver.eth'),
+      namehash.hash('dnsresolver.planq'),
       ownedResolver.address,
     )
     await ownedResolver.setAddr(
-      namehash.hash('dnsresolver.eth'),
+      namehash.hash('dnsresolver.planq'),
       ownedResolver.address,
     )
 
@@ -254,7 +254,7 @@ contract('OffchainDNSResolver', function (accounts) {
     ).encodeABI()
     const result = await doResolveCallback(
       name,
-      ['ENS1 nonexistent.eth', 'ENS1 0x1234', `ENS1 ${ownedResolver.address}`],
+      ['ENS1 nonexistent.planq', 'ENS1 0x1234', `ENS1 ${ownedResolver.address}`],
       callData,
     )
     expect(
