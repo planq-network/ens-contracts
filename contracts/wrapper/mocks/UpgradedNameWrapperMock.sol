@@ -9,7 +9,7 @@ contract UpgradedNameWrapperMock is INameWrapperUpgrade {
     using BytesUtils for bytes;
 
     bytes32 private constant ETH_NODE =
-        0x93cdeb708b7545dc668eb9280176169d1c33cfd8ed6f04690a0bcc88a93fc4ae;
+        0x5f87a2aabaca5f14501a6175a43f6f1d70542683470d59b4b58f932c39bf4418;
 
     ENS public immutable ens;
     IBaseRegistrar public immutable registrar;

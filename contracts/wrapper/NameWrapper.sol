@@ -47,9 +47,9 @@ contract NameWrapper is
 
     uint64 private constant GRACE_PERIOD = 90 days;
     bytes32 private constant ETH_NODE =
-        0x93cdeb708b7545dc668eb9280176169d1c33cfd8ed6f04690a0bcc88a93fc4ae;
+        0x5f87a2aabaca5f14501a6175a43f6f1d70542683470d59b4b58f932c39bf4418;
     bytes32 private constant ETH_LABELHASH =
-        0x4f5b812789fc606be1b3b16908db13fc7a9adf7ca72641f84d75b47069d3d7f0;
+        0x223ecd54b61b72a50e21ba2cbc6db572be10090b56ab5a4e8ca7c7fce0a96364;
     bytes32 private constant ROOT_NODE =
         0x0000000000000000000000000000000000000000000000000000000000000000;
 
@@ -80,7 +80,7 @@ contract NameWrapper is
             MAX_EXPIRY
         );
         names[ROOT_NODE] = "\x00";
-        names[ETH_NODE] = "\x03eth\x00";
+        names[ETH_NODE] = "\x03planq\x00";
     }
 
     function supportsInterface(
@@ -96,7 +96,7 @@ contract NameWrapper is
 
     /**
      * @notice Gets the owner of a name
-     * @param id Label as a string of the .eth domain to wrap
+     * @param id Label as a string of the .planq domain to wrap
      * @return owner The owner of the name
      */
 
@@ -268,9 +268,9 @@ contract NameWrapper is
     }
 
     /**
-     * @notice Wraps a .eth domain, creating a new token and sending the original ERC721 token to this contract
-     * @dev Can be called by the owner of the name on the .eth registrar or an authorised caller on the registrar
-     * @param label Label as a string of the .eth domain to wrap
+     * @notice Wraps a .planq domain, creating a new token and sending the original ERC721 token to this contract
+     * @dev Can be called by the owner of the name on the .planq registrar or an authorised caller on the registrar
+     * @param label Label as a string of the .planq domain to wrap
      * @param wrappedOwner Owner of the name in this contract
      * @param ownerControlledFuses Initial owner-controlled fuses to set
      * @param resolver Resolver contract address
@@ -312,14 +312,14 @@ contract NameWrapper is
     }
 
     /**
-     * @dev Registers a new .eth second-level domain and wraps it.
+     * @dev Registers a new .planq second-level domain and wraps it.
      *      Only callable by authorised controllers.
-     * @param label The label to register (Eg, 'foo' for 'foo.eth').
+     * @param label The label to register (Eg, 'foo' for 'foo.planq').
      * @param wrappedOwner The owner of the wrapped name.
      * @param duration The duration, in seconds, to register the name for.
      * @param resolver The resolver address to set on the ENS registry (optional).
      * @param ownerControlledFuses Initial owner-controlled fuses to set
-     * @return registrarExpiry The expiry date of the new name on the .eth registrar, in seconds since the Unix epoch.
+     * @return registrarExpiry The expiry date of the new name on the .planq registrar, in seconds since the Unix epoch.
      */
 
     function registerAndWrapETH2LD(
@@ -341,11 +341,11 @@ contract NameWrapper is
     }
 
     /**
-     * @notice Renews a .eth second-level domain.
+     * @notice Renews a .planq second-level domain.
      * @dev Only callable by authorised controllers.
-     * @param tokenId The hash of the label to register (eg, `keccak256('foo')`, for 'foo.eth').
+     * @param tokenId The hash of the label to register (eg, `keccak256('foo')`, for 'foo.planq').
      * @param duration The number of seconds to renew the name for.
-     * @return expires The expiry date of the name on the .eth registrar, in seconds since the Unix epoch.
+     * @return expires The expiry date of the name on the .planq registrar, in seconds since the Unix epoch.
      */
 
     function renew(
@@ -379,7 +379,7 @@ contract NameWrapper is
     }
 
     /**
-     * @notice Wraps a non .eth domain, of any kind. Could be a DNSSEC name vitalik.xyz or a subdomain
+     * @notice Wraps a non .planq domain, of any kind. Could be a DNSSEC name vitalik.xyz or a subdomain
      * @dev Can be called by the owner in the registry or an authorised caller in the registry
      * @param name The name to wrap, in DNS format
      * @param wrappedOwner Owner of the name in this contract
@@ -417,10 +417,10 @@ contract NameWrapper is
     }
 
     /**
-     * @notice Unwraps a .eth domain. e.g. vitalik.eth
+     * @notice Unwraps a .planq domain. e.g. vitalik.planq
      * @dev Can be called by the owner in the wrapper or an authorised caller in the wrapper
-     * @param labelhash Labelhash of the .eth domain
-     * @param registrant Sets the owner in the .eth registrar to this address
+     * @param labelhash Labelhash of the .planq domain
+     * @param registrant Sets the owner in the .planq registrar to this address
      * @param controller Sets the owner in the registry to this address
      */
 
@@ -441,7 +441,7 @@ contract NameWrapper is
     }
 
     /**
-     * @notice Unwraps a non .eth domain, of any kind. Could be a DNSSEC name vitalik.xyz or a subdomain
+     * @notice Unwraps a non .planq domain, of any kind. Could be a DNSSEC name vitalik.xyz or a subdomain
      * @dev Can be called by the owner in the wrapper or an authorised caller in the wrapper
      * @param parentNode Parent namehash of the name e.g. vitalik.xyz would be namehash('xyz')
      * @param labelhash Labelhash of the name, e.g. vitalik.xyz would be keccak256('vitalik')
@@ -531,7 +531,7 @@ contract NameWrapper is
     }
 
     /**
-     * @notice Upgrades a domain of any kind. Could be a .eth name vitalik.eth, a DNSSEC name vitalik.xyz, or a subdomain
+     * @notice Upgrades a domain of any kind. Could be a .planq name vitalik.planq, a DNSSEC name vitalik.xyz, or a subdomain
      * @dev Can be called by the owner or an authorised caller
      * @param name The name to upgrade, in DNS format
      * @param extraData Extra data to pass to the upgrade contract
@@ -566,7 +566,7 @@ contract NameWrapper is
         );
     }
 
-    /** 
+    /**
     /* @notice Sets fuses of a name that you own the parent of
      * @param parentNode Parent namehash of the name e.g. vitalik.xyz would be namehash('xyz')
      * @param labelhash Labelhash of the name, e.g. vitalik.xyz would be keccak256('vitalik')
@@ -907,7 +907,7 @@ contract NameWrapper is
         uint32 fuses,
         uint64 expiry
     ) internal override {
-        // For this check, treat .eth 2LDs as expiring at the start of the grace period.
+        // For this check, treat .planq 2LDs as expiring at the start of the grace period.
         if (fuses & IS_DOT_ETH == IS_DOT_ETH) {
             expiry -= GRACE_PERIOD;
         }
@@ -1071,7 +1071,7 @@ contract NameWrapper is
         uint64 maxExpiry
     ) private pure returns (uint64) {
         // Expiry cannot be more than maximum allowed
-        // .eth names will check registrar, non .eth check parent
+        // .planq names will check registrar, non .planq check parent
         if (expiry > maxExpiry) {
             expiry = maxExpiry;
         }
@@ -1093,7 +1093,7 @@ contract NameWrapper is
         bytes32 labelhash = keccak256(bytes(label));
         bytes32 node = _makeNode(ETH_NODE, labelhash);
         // hardcode dns-encoded eth string for gas savings
-        bytes memory name = _addLabel(label, "\x03eth\x00");
+        bytes memory name = _addLabel(label, "\x03planq\x00");
         names[node] = name;
 
         _wrap(
