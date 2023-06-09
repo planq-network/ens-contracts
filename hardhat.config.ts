@@ -73,6 +73,12 @@ const config: HardhatUserConfig = {
       chainId: 1,
       accounts: real_accounts,
     },
+    planq: {
+      url: 'https://evm-rpc.planq.network:443',
+      tags: ['legacy', 'use_root'],
+      chainId: 7070,
+      accounts: real_accounts,
+    },
   },
   mocha: {},
   solidity: {
